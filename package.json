@@ -1,0 +1,23 @@
+{
+  "name": "enigma",
+  "version": "1.0.0",
+  "description": "Enigma M3/M4 Simulator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dyeboah/node-enigma.git"
+  },
+  "keywords": [
+    "npm",
+    "enigma"
+  ],
+  "author": "David Yeboah <dyeboah@oswego.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dyeboah/node-enigma/issues"
+  },
+  "homepage": "https://github.com/dyeboah/node-enigma#readme"
+}

@@ -1,8 +1,8 @@
 {
-  "name": "enigma",
+  "name": "node-enigma",
   "version": "1.0.0",
   "description": "Enigma M3/M4 Simulator",
-  "main": "index.js",
+  "main": "libs/node-enigma.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

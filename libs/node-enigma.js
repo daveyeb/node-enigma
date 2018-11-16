@@ -3,10 +3,10 @@ var wheels = require("./wheels");
 
 var DEFAULT_CONFIG = {	code: [ 0, 0, 0 ],
 
-						plugboard: {	'A':'A','B':'B','C':'C','D':'D','E':'E','F':'F','G':'G',
-										'H':'H','I':'I','J':'J','K':'K','L':'L','M':'M','N':'N',
-										'O':'O','P':'P','Q':'Q','R':'R','S':'S','T':'T','U':'U',
-										'V':'V','W':'W','X':'X','Y':'Y','Z':'Z'	  }
+			plugboard: {	'A':'A','B':'B','C':'C','D':'D','E':'E','F':'F','G':'G',
+					'H':'H','I':'I','J':'J','K':'K','L':'L','M':'M','N':'N',
+					'O':'O','P':'P','Q':'Q','R':'R','S':'S','T':'T','U':'U',
+					'V':'V','W':'W','X':'X','Y':'Y','Z':'Z'	  }
 };
 
 var flag = false;
@@ -58,30 +58,30 @@ var getIndex = function(input){
 }
 
 var signals = [ (input, code) => { signal =  ( getIndex(input) + code[2] ) % 26;
-								   return ( signal < 0 ) ? signal + 26 : signal;
-								 },
-				(input, code) => { signal = ( getIndex(input) + (code[1]-code[2]) ) % 26;
-								   return ( signal < 0 ) ? signal + 26 : signal;
-								 },
-				(input, code) => { signal = ( getIndex(input) + (code[0]-code[1]) ) % 26;
-								 return (signal < 0) ? signal + 26 : signal;
-								 },
-				(input, code) => { signal = ( getIndex(input) - code[0] ) % 26;
-								   return ( signal < 0 ) ? signal + 26 : signal;
-								 },
-				(input, code) => { signal = ( getIndex(input) + code[0] ) % 26;
-								 return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
-								 },
-				(input, code) => { signal = ( getIndex(input) + (code[1]-code[0]) ) % 26;
-								   return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
-								 },
-				(input, code) => { signal = ( getIndex(input) + (code[2]-code[1]) ) % 26;
-								   return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
-								 },
-				(input, code) => { signal = ( getIndex(input) - (code[2]) ) % 26;
-								   return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
-								 }
-			  ];
+				   return ( signal < 0 ) ? signal + 26 : signal;
+				 },
+		(input, code) => { signal = ( getIndex(input) + (code[1]-code[2]) ) % 26;
+				   return ( signal < 0 ) ? signal + 26 : signal;
+				 },
+		(input, code) => { signal = ( getIndex(input) + (code[0]-code[1]) ) % 26;
+				   return (signal < 0) ? signal + 26 : signal;
+				 },
+		(input, code) => { signal = ( getIndex(input) - code[0] ) % 26;
+				   return ( signal < 0 ) ? signal + 26 : signal;
+				 },
+		(input, code) => { signal = ( getIndex(input) + code[0] ) % 26;
+				   return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
+				 },
+		(input, code) => { signal = ( getIndex(input) + (code[1]-code[0]) ) % 26;
+				   return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
+				 },
+		(input, code) => { signal = ( getIndex(input) + (code[2]-code[1]) ) % 26;
+				   return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
+				 },
+		(input, code) => { signal = ( getIndex(input) - (code[2]) ) % 26;
+				   return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
+				 }
+	     ];
 
 Enigma.prototype.encode = function(input){
 	var plugboard = this.plugboard || DEFAULT_CONFIG['plugboard'];

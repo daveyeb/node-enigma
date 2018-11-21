@@ -4,7 +4,7 @@
   "description": "Enigma M3/M4 Simulator",
   "main": "libs/node-enigma.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter nyan"
   },
   "repository": {
     "type": "git",
@@ -12,12 +12,20 @@
   },
   "keywords": [
     "npm",
-    "enigma"
+    "enigma",
+    "encryption"
   ],
   "author": "David Yeboah <dyeboah@oswego.edu>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dyeboah/node-enigma/issues"
   },
-  "homepage": "https://github.com/dyeboah/node-enigma#readme"
+  "homepage": "https://github.com/dyeboah/node-enigma#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "clone": "^2.1.2"
+  }
 }

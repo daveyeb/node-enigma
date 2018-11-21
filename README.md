@@ -21,7 +21,7 @@ Usage
   var Enigma = require('node-enigma');
   
   // Initialize 
-  let enigma = new Enigma('v','iv','iii','ukw-b');
+  var enigma = new Enigma('v','iv','iii','ukw-b');
   
   enigma.decode("BEIITTDNR");
   ```

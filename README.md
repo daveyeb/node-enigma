@@ -1,4 +1,4 @@
-node-enigma
+node-enigma  [![Build Status](https://travis-ci.org/dyeboah/node-enigma.svg?branch=master)](https://travis-ci.org/dyeboah/node-enigma)  [![Coverage Status](https://coveralls.io/repos/github/dyeboah/node-enigma/badge.svg?branch=master)](https://coveralls.io/github/dyeboah/node-enigma?branch=master)
 ===========
 
 Node.js module to cipher and decipher messages. 

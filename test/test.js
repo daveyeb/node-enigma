@@ -64,7 +64,6 @@ describe('Enigma', function() {
 			var result = enigma.decode("HENYRQPFTCJ");
 			expect(result).to.equal("ILOVEFISHES");
 		});
-
 	});
 
 });

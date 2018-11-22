@@ -23,7 +23,7 @@ Usage
   // Initialize 
   var enigma = new Enigma('v','iv','iii','ukw-b');
   
-  enigma.decode("BEIITTDNR"); \\INAPICKLE
+  enigma.decode("BEIITTDNR"); // INAPICKLE
   ```
   
   

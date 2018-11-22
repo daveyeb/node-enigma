@@ -23,10 +23,9 @@ Usage
   // Initialize 
   var enigma = new Enigma('v','iv','iii','ukw-b');
   
-  enigma.decode("BEIITTDNR");
+  enigma.decode("BEIITTDNR"); \\INAPICKLE
   ```
   
-  Output should be `INAPICKLE`
   
   >Refer to test directory for more basic usage
   

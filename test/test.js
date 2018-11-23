@@ -50,9 +50,9 @@ describe('Enigma', function() {
 
 		it('should encode message with ring setting', function(){
 			var enigma = new Enigma("i","ii","iii","ukw-b");
-			enigma.setCode(['H','D','X']);
+			enigma.setCode(['Q','E','V']);
 			var result = enigma.encode("ILOVEFISHES");
-			expect(result).to.equal("WZIIALTAFZL");
+			expect(result).to.equal("PVVIWAEHVZE");
 		});
 
 	});

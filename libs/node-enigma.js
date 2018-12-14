@@ -1,8 +1,16 @@
 'use strict';
 
+/**
+ *  node-enigma.js
+ */
+
+
 var wheels = require("./wheels");
 var clone = require("clone");
 
+/**
+ *  default values 
+ */
 var DEFAULT_CONFIG = {	code: [ 0, 0, 0 ],
 
 			plugboard: {	'A':'A','B':'B','C':'C','D':'D','E':'E','F':'F','G':'G',
@@ -13,6 +21,16 @@ var DEFAULT_CONFIG = {	code: [ 0, 0, 0 ],
 
 var flag = false;
 
+
+/**
+ *  constructor
+ *
+ * @param {string} rotor_1
+ * @param {string} rotor_2
+ * @param {string} rotor_3
+ * @param {string} reflector
+ *  
+ */
 function Enigma(rotor_1, rotor_2, rotor_3, reflector) {
 	this.rotors = [wheels[rotor_3], wheels[rotor_2], wheels[rotor_1], wheels[reflector]];
 	this.code = null;
@@ -21,6 +39,14 @@ function Enigma(rotor_1, rotor_2, rotor_3, reflector) {
 	this.defaults = clone( DEFAULT_CONFIG );
 }
 
+
+/**
+ * sets ring settings
+ *
+ * @param  {Array} code
+ *            An array of strings.
+ *			  ex. ['A','B','Z']
+ */
 Enigma.prototype.setCode = function(code){
 	this.code = this.defaults[ 'code' ];
 	var df = wheels['df'];
@@ -29,6 +55,13 @@ Enigma.prototype.setCode = function(code){
 	}
 }
 
+
+/**
+ * sets plug pairs
+ *
+ * @param  {Object} plugboard - An object of pairs.
+ *           ex. {'A':'B','Z':'V'}
+ */
 Enigma.prototype.setPlugboard = function(plugboard){
 	this.plugboard = this.defaults[ 'plugboard' ];
 	for ( var i in plugboard ){
@@ -38,6 +71,9 @@ Enigma.prototype.setPlugboard = function(plugboard){
 }
 
 
+/**
+ * increments ring/code settings 
+ */
 function increment() {
 	var df = wheels['df'];
 	var code = this.code || this.defaults[ 'code' ];
@@ -57,10 +93,22 @@ function increment() {
 	this.code = code;
 }
 
+/**
+ * returns the index of a letter
+ *
+ *@param {string} input - letter
+ *
+ * @return {number} 
+ */
 var getIndex = function(input){
 	return wheels['df'].indexOf(input);
 }
 
+
+
+/**
+ *  an array of signals 
+ */
 var signals = [ (input, code) => { var signal =  ( getIndex(input) + code[2] ) % 26;
 				   return ( signal < 0 ) ? signal + 26 : signal;
 				 },
@@ -87,6 +135,14 @@ var signals = [ (input, code) => { var signal =  ( getIndex(input) + code[2] ) %
 				 }
 	     ];
 
+
+/**
+ *  ciphers plaintext
+ *
+ *  @param {string} input - plaintext
+ *
+ *  @returns {string} - ciphertext
+ */
 Enigma.prototype.encode = function(input){
 	var plugboard = this.plugboard || this.defaults[ 'plugboard' ];
 	var rotors = this.rotors;
@@ -118,6 +174,14 @@ Enigma.prototype.encode = function(input){
 
 }
 
+
+/**
+ *  deciphers ciphertext
+ *
+ *  @param {string} input - ciphertext
+ *
+ *  @returns {string} - plaintext
+ */
 Enigma.prototype.decode = function(input){
 	return this.encode(input);
 }

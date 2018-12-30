@@ -94,6 +94,7 @@ function increment() {
 	if ( rotors[0].turnover.split('').includes( df[ code[2]  ] ) ) {
 		code[2] = ( code[2] + 1 ) % 26;
 		code[1] = ( code[1] + 1 ) % 26;
+		this.code = code;
 		return;	
 	}
 
@@ -102,11 +103,12 @@ function increment() {
 		code[1] = ( code[1] + 1 ) % 26;
 		code[0] = ( code[0] + 1 ) % 26;
 		flag = true;
+		this.code = code;
 		return;
 	}
 
 	code[2] = ( code[2] + 1 ) % 26;
-	
+	this.code = code;
 }
 
 /**
@@ -175,7 +177,8 @@ Enigma.prototype.encode = function(input){
 	[...input].forEach((char) => {
 		increment.call(this);
 		code = this.code;
-		console.log(df[code[0]], df[code[1]], df[code[2]]);
+		//console.log(code,this.code);
+		//console.log(df[code[0]], df[code[1]], df[code[2]]);
 		char = plugboard[char];
 
 		var i = 0, j = 3;

@@ -36,23 +36,23 @@ describe('Enigma', function() {
 
 	describe('.encode',function(){
 		it('should encode message with default setting', function(){
-			var enigma = new Enigma("i","ii","iii","ukw-b");
+			var enigma = new Enigma("i","ii","iii","gamma","b-thin");
 			var result = enigma.decode("ILOVEFISHES");
-			expect(result).to.equal("HENYRQPFTCJ");
+			expect(result).to.equal("UUUJGGOCWJM");
 		});
 
 		it('should encode with plug pairings', function(){
-			var enigma = new Enigma("i","ii","iii","ukw-b");
+			var enigma = new Enigma("i","ii","iii","beta","b-thin");
 			enigma.setPlugboard({'X':'S','F':'V'});
 			var result = enigma.encode("ILOVEFISHES");
 			expect(result).to.equal("HENTRDPATCH");
 		});
 
 		it('should encode message with ring setting', function(){
-			var enigma = new Enigma("i","ii","iii","ukw-b");
+			var enigma = new Enigma("i","ii","iii","gamma","c-thin");
 			enigma.setCode(['Q','E','V']);
 			var result = enigma.encode("ILOVEFISHES");
-			expect(result).to.equal("PVVIWAEHVZE");
+			expect(result).to.equal("YMALQIVCMSF");
 		});
 
 	});
@@ -60,8 +60,8 @@ describe('Enigma', function() {
 
 	describe('.decode',function(){
 		it('should decode message with default setting', function(){
-			var enigma = new Enigma("i","ii","iii","ukw-b");
-			var result = enigma.decode("HENYRQPFTCJ");
+			var enigma = new Enigma("i","ii","iii","gamma","b-thin");
+			var result = enigma.decode("UUUJGGOCWJM");
 			expect(result).to.equal("ILOVEFISHES");
 		});
 	});

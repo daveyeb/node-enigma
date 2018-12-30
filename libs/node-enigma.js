@@ -28,15 +28,24 @@ var flag = false;
  * @param {string} rotor_1
  * @param {string} rotor_2
  * @param {string} rotor_3
+ * @param {string} rotor_4
  * @param {string} reflector
  *  
  */
-function Enigma(rotor_1, rotor_2, rotor_3, reflector) {
-	this.rotors = [wheels[rotor_3], wheels[rotor_2], wheels[rotor_1], wheels[reflector]];
+function Enigma(rotor_1, rotor_2, rotor_3, rotor_4, reflector) {
+	this.rotors = [wheels[rotor_3], wheels[rotor_2], wheels[rotor_1]];
 	this.code = null;
 	this.plugboard = null; 
-
 	this.defaults = clone( DEFAULT_CONFIG );
+
+	if( typeof reflector !== 'undefined' ){
+		this.rotors.push(wheels[rotor_4]);
+		this.rotors.push(wheels[reflector]);
+	}else {
+		this.rotors.push(wheels[rotor_4])
+	}
+
+	//console.log(this.rotors);
 }
 
 
@@ -78,19 +87,26 @@ function increment() {
 	var df = wheels['df'];
 	var code = this.code || this.defaults[ 'code' ];
 	var rotors = this.rotors;
-
-
-	code[2] = ( code[2] + 1 ) % 26;
-
-	if ( code[1] > getIndex(rotors[1].turnover) + 1 ) flag = false;
-	if ( code[2] == getIndex(rotors[0].turnover) + 1 ) code[1] = ( code[1] + 1 ) % 26;
 	
-	if ( code[1] == getIndex(rotors[1].turnover) + 1 && !flag ) {
+	
+	if ( !rotors[1].turnover.split('').includes( df[ code[1] ] )) flag = false;
+
+	if ( rotors[0].turnover.split('').includes( df[ code[2]  ] ) ) {
+		code[2] = ( code[2] + 1 ) % 26;
+		code[1] = ( code[1] + 1 ) % 26;
+		return;	
+	}
+
+	if ( rotors[1].turnover.split('').includes( df[ code[1]  ]) && !flag ) {
+		code[2] = ( code[2] + 1 ) % 26;
+		code[1] = ( code[1] + 1 ) % 26;
 		code[0] = ( code[0] + 1 ) % 26;
 		flag = true;
+		return;
 	}
+
+	code[2] = ( code[2] + 1 ) % 26;
 	
-	this.code = code;
 }
 
 /**
@@ -98,7 +114,7 @@ function increment() {
  *
  *@param {string} input - letter
  *
- * @return {number} 
+ *@return {number} 
  */
 var getIndex = function(input){
 	return wheels['df'].indexOf(input);
@@ -112,22 +128,27 @@ var getIndex = function(input){
 var signals = [ (input, code) => { var signal =  ( getIndex(input) + code[2] ) % 26;
 				   return ( signal < 0 ) ? signal + 26 : signal;
 				 },
-		(input, code) => { var signal = ( getIndex(input) + (code[1]-code[2]) ) % 26;
+		(input, code) => { var signal = ( getIndex(input) + (code[1] - code[2]) ) % 26;
 				   return ( signal < 0 ) ? signal + 26 : signal;
 				 },
-		(input, code) => { var signal = ( getIndex(input) + (code[0]-code[1]) ) % 26;
+		(input, code) => { var signal = ( getIndex(input) + (code[0] - code[1]) ) % 26;
 				   return (signal < 0) ? signal + 26 : signal;
 				 },
-		(input, code) => { var signal = ( getIndex(input) - code[0] ) % 26;
+		(input, code) => {  var signal = ( getIndex(input) - code[0] ) % 26; 
+				   return (signal < 0) ? signal + 26 : signal;
+				 },		 
+		(input, code) => {  var signal = ( getIndex(input)  ) % 26; 
 				   return ( signal < 0 ) ? signal + 26 : signal;
 				 },
-		(input, code) => { var signal = ( getIndex(input) + code[0] ) % 26;
+		(input, code) => {  var signal = ( getIndex(input) ) % 26;
 				   return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
+				 },
+		(input, code) => {  return wheels['df'][ ( getIndex(input) + code[0] ) % 26 ];
 				 },
 		(input, code) => { var signal = ( getIndex(input) + (code[1]-code[0]) ) % 26;
 				   return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
 				 },
-		(input, code) => { var signal = ( getIndex(input) + (code[2]-code[1]) ) % 26;
+		(input, code) => { var signal = ( getIndex(input) + (code[2]- code[1]) ) % 26;
 				   return wheels['df'][ (signal < 0) ? signal + 26 : signal ];
 				 },
 		(input, code) => { var signal = ( getIndex(input) - (code[2]) ) % 26;
@@ -154,15 +175,18 @@ Enigma.prototype.encode = function(input){
 	[...input].forEach((char) => {
 		increment.call(this);
 		code = this.code;
+		console.log(df[code[0]], df[code[1]], df[code[2]]);
 		char = plugboard[char];
 
-		var i = 0, j = 2;
+		var i = 0, j = 3;
 		while( true ){
+			console.log(char);
 			var isCap = i < rotors.length;
 			char = isCap ? rotors[i].wire[signals[i](char, code)] : 
 						   df[ rotors[j].wire.indexOf(signals[i](char, code)) ];
 			if(!isCap) j--; i++;
-			if(i > 6) break; 
+			if(i > 8) break; 
+
 		}
 
 		char = plugboard[signals[i](char, code)];
@@ -173,7 +197,6 @@ Enigma.prototype.encode = function(input){
 	return ciphertext;
 
 }
-
 
 /**
  *  deciphers ciphertext

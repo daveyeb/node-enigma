@@ -1,6 +1,6 @@
 "use strict";
 
-var Enigma = require("../libs/node-enigma.js");
+var Enigma = require("../lib/node-enigma.js");
 var expect = require('chai').expect;
 var assert = require('assert');
 

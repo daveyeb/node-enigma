@@ -39,7 +39,7 @@ Usage
     'W': 'L',
     "D": "N"
    });
-  m3.decode("OGRFHRJYV"); // XXXKMVOXH
+  m4.decode("OGRFHRJYV"); // XXXKMVOXH
   
   
   const m3 = new Enigma('v','iv','iii','ukw-b');

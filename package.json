@@ -1,6 +1,6 @@
 {
   "name": "node-enigma",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Enigma M3/M4 Simulator",
   "main": "libs/node-enigma.js",
   "scripts": {

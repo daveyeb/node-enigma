@@ -56,6 +56,8 @@ Usage
   
   >Refer to test directory for more basic usage
   
+  >⬆🔠
+  
   
 Contribute
 ----------

@@ -11,7 +11,7 @@ Install
 -------
 
   ```
-  $ npm install --save node-enigma
+  $ npm install node-enigma
   ```
   
 Usage
@@ -20,10 +20,37 @@ Usage
   ```javascript
   var Enigma = require('node-enigma');
   
-  // Initialize 
-  var enigma = new Enigma('v','iv','iii','ukw-b');
+  /**
+  * M4 CONFIGURATION
+  * WHEEL POSITIONS [4TH, 3RD, 2ND, 1ST, REFLECTOR]
+  *
+  * M3 CONFIGURATION
+  * WHEEL POSITIONS [ 3RD, 2ND, 1ST, REFLECTOR]
+  *
+  * WHEELS 
+  *   ROTORS['i','ii','iii','iv','v','vi','vii,'viii']
+  *   REFLECTORS['ukw-b','ukw-c','b-thin','c-thin']
+  *   GREEK['beta', 'gamma']
+  */
   
-  enigma.decode("BEIITTDNR"); // INAPICKLE
+  const m4 = new Enigma('beta','v','iv','iii','ukw-b');
+  m4.setCode(['C', 'D', 'E']);
+  m4.setPlugboard({
+    'W': 'L',
+    "D": "N"
+   });
+  m3.decode("OGRFHRJYV"); // XXXKMVOXH
+  
+  
+  const m3 = new Enigma('v','iv','iii','ukw-b');
+  m3.setCode(['A', 'B', 'C']);
+  m3.setPlugboard({
+    'Q': 'V',
+    "S": "M"
+   });
+  m3.decode("OGRFHRJYV"); // INAPICKLE
+  
+  
   ```
   
   
@@ -33,4 +60,4 @@ Usage
 Contribute
 ----------
 
-Clone this repo and make a script inside the folder to test outputs with `require('./libs/node-enigma')`. Any fixes, cleanup or new features are always appreciated.
+Clone this repo to add custom wheels. Make a script inside the folder to test outputs with `require('./lib/node-enigma')`. Any fixes, cleanup or new features are always appreciated.

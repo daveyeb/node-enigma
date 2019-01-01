@@ -41,7 +41,6 @@ Usage
    });
   m4.decode("OGRFHRJYV"); // XXXKMVOXH
   
-  
   const m3 = new Enigma('v','iv','iii','ukw-b');
   m3.setCode(['A', 'B', 'C']);
   m3.setPlugboard({
@@ -49,6 +48,9 @@ Usage
     "S": "M"
    });
   m3.decode("OGRFHRJYV"); // INAPICKLE
+  
+  const enigma = new Enigma('i','ii','iii','ukw-b');
+  enigma.encode("BABYDRIVER");  //ADLVITPHWX
   
   
   ```

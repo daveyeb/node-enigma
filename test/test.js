@@ -80,9 +80,9 @@ describe('Enigma M3', function() {
 
   it('should encode message with ring setting', function() {
    var enigma = new Enigma("i", "ii", "iii", "ukw-c");
-   enigma.setCode(['Q', 'E', 'V']);
+   enigma.setCode(['A', 'L', 'L']);
    var result = enigma.encode("ILOVEFISHES");
-   expect(result).to.equal("TRZGXKNILKP");
+   expect(result).to.equal("KQJYTOHQEWP");
   });
 
  });

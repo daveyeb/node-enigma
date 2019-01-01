@@ -2,7 +2,7 @@
   "name": "node-enigma",
   "version": "1.2.0",
   "description": "Enigma M3/M4 Simulator",
-  "main": "libs/node-enigma.js",
+  "main": "lib/node-enigma.js",
   "scripts": {
     "test": "mocha --reporter nyan",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"

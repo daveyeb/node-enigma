@@ -33,7 +33,7 @@ Usage
   *   GREEK['beta', 'gamma']
   */
   
-  const m4 = new Enigma('beta','v','iv','iii','ukw-b');
+  const m4 = new Enigma('beta','v','iv','iii','b-thin');
   m4.setCode(['C', 'D', 'E']);
   m4.setPlugboard({
     'W': 'L',

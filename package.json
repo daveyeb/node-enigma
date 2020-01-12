@@ -16,7 +16,7 @@
     "enigma",
     "encryption"
   ],
-  "author": "David Yeboah <dyeboah@oswego.edu>",
+  "author": "David Yeboah <daveyeb@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dyeboah/node-enigma/issues"
@@ -28,7 +28,5 @@
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0"
   },
-  "dependencies": {
-    "clone": "^2.1.2"
-  }
+  "dependencies": {}
 }

@@ -4,15 +4,22 @@ Node.js module to cipher and decipher messages.
 This module is intended to imitate the operation of the Enigma M3/M4 developed during the WWII.
 For more information on Enigma, visit [Enigma Cipher Machine](http://www.cryptomuseum.com/crypto/enigma/index.htm).
 
-Contact me [@dyeboah](mailto:dyeboah@oswego.edu) with any questions, feedback or bugs.
+Contact me [@daveyeb](mailto:daveyeb@gmail.com) with any questions, feedback or bugs.
 
-## Install
+## New feature 😄
+
+* Machine avoids whitespaces and illegal characters. 
+ 
+* Machine has no dependencies. 
+
+
+## Install 🛠
 
 ```
 $ npm install node-enigma
 ```
 
-## Usage
+## Usage 📜
 
 ```javascript
 var Enigma = require("node-enigma");
@@ -52,8 +59,6 @@ enigma.encode("BABYDRIVER"); //ADLVITPHWX
 
 > Refer to test directory for more basic usage
 
-> ⬆🔠
-
-## Contribute
+## Contribute 🤝
 
 Clone this repo to add custom wheels. Make a script inside the folder to test outputs with `require('./lib/node-enigma')`. Any fixes, cleanup or new features are always appreciated.

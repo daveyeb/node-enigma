@@ -18,7 +18,8 @@ describe('Enigma M3', function() {
   it('should set code', function() {
    var enigma = new Enigma("i", "ii", "iii", "ukw-b");
    enigma.setCode(['J', 'B', 'C']);
-   expect(enigma.code).to.deep.equal([9, 1, 2]);
+   var code = enigma.config.match(/\d*\.\d*\.\d*/g).join("").split(".").map((c)=> parseInt(c, 10))
+   expect(code).to.deep.equal([9, 1, 2]);
   });
  });
 
@@ -29,35 +30,9 @@ describe('Enigma M3', function() {
     'V': 'F',
     "S": "P"
    });
-   var expected = {
-    'A': 'A',
-    'B': 'B',
-    'C': 'C',
-    'D': 'D',
-    'E': 'E',
-    'F': 'V',
-    'G': 'G',
-    'H': 'H',
-    'I': 'I',
-    'J': 'J',
-    'K': 'K',
-    'L': 'L',
-    'M': 'M',
-    'N': 'N',
-    'O': 'O',
-    'P': 'S',
-    'Q': 'Q',
-    'R': 'R',
-    'S': 'P',
-    'T': 'T',
-    'U': 'U',
-    'V': 'F',
-    'W': 'W',
-    'X': 'X',
-    'Y': 'Y',
-    'Z': 'Z'
-   }
-   expect(enigma.plugboard).to.deep.equal(expected);
+   var plugboard = enigma.config.match(/[A-Z]/g).join("");
+   var expected = "ABCDEVGHIJKLMNOSQRPTUFWXYZ"
+   expect(plugboard).to.deep.equal(expected);
   });
  });
 
@@ -112,7 +87,8 @@ describe('Enigma M4', function() {
   it('should set code', function() {
    var enigma = new Enigma("gamma", "i", "ii", "iii", "ukw-b");
    enigma.setCode(['J', 'B', 'C']);
-   expect(enigma.code).to.deep.equal([9, 1, 2]);
+   var code = enigma.config.match(/\d*\.\d*\.\d*/g).join("").split(".").map((c)=> parseInt(c, 10))
+   expect(code).to.deep.equal([9, 1, 2]);
   });
  });
 
@@ -123,35 +99,9 @@ describe('Enigma M4', function() {
     'V': 'F',
     "S": "P"
    });
-   var expected = {
-    'A': 'A',
-    'B': 'B',
-    'C': 'C',
-    'D': 'D',
-    'E': 'E',
-    'F': 'V',
-    'G': 'G',
-    'H': 'H',
-    'I': 'I',
-    'J': 'J',
-    'K': 'K',
-    'L': 'L',
-    'M': 'M',
-    'N': 'N',
-    'O': 'O',
-    'P': 'S',
-    'Q': 'Q',
-    'R': 'R',
-    'S': 'P',
-    'T': 'T',
-    'U': 'U',
-    'V': 'F',
-    'W': 'W',
-    'X': 'X',
-    'Y': 'Y',
-    'Z': 'Z'
-   }
-   expect(enigma.plugboard).to.deep.equal(expected);
+   var expected = "ABCDEVGHIJKLMNOSQRPTUFWXYZ"
+   var plugboard = enigma.config.match(/[A-Z]/g).join("")
+   expect(plugboard).to.deep.equal(expected);
   });
  });
 

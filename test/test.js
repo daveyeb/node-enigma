@@ -5,15 +5,50 @@ var expect = require('chai').expect;
 var assert = require('assert');
 
 
-describe('Enigma M3', function() {
+describe("Instantiation", function(){
+  
+  describe('intantiating with less rotors', function() {
+  it('should throw an config error', function() {
+   expect(() => Enigma("ii", "iii", "ukw-b") ).to.throw("Enigma machine configuration is not setup right! Must be three or more wheels assigned/configured!");
+  });
+ });
 
- describe('instantiation', function() {
-  it('should initialize an Enigma instance', function() {
+  describe('Enigma m3 instantiation', function() {
+  it('should initialize an Enigma m3 instance', function() {
    var result = new Enigma("i", "ii", "iii", "ukw-b");
    expect(result).to.be.an.instanceof(Enigma);
   });
  });
 
+ describe('Enigma m4 instantiation', function() {
+  it('should initialize an Enigma m4 instance', function() {
+   var result = new Enigma("beta", "i", "ii", "iii", "ukw-b");
+   expect(result).to.be.an.instanceof(Enigma);
+  });
+ });
+
+})
+
+
+describe("Encoding plaintext with whitespaces/illegal characters", function(){
+  describe('Plaintext with whitespaces', function() {
+  it('should initialize an Enigma m3 instance', function() {
+   var enigma = new Enigma("i", "ii", "iii", "ukw-c");
+   var result = enigma.encode("I LOVE FISHES");
+   expect(result).to.equal("W TPDV LWXLIB");
+  });
+ });
+
+ describe('Plaintext with illegal characters', function() {
+  it('should initialize an Enigma m3 instance', function() {
+   var enigma = new Enigma("i", "ii", "iii", "ukw-c");
+   var result = enigma.encode("ILOVE*/?FISHES");
+   expect(result).to.equal("WTPDV   LWXLIB");
+  });
+ });
+})
+
+describe('Enigma M3', function() {
  describe('.setCode', function() {
   it('should set code', function() {
    var enigma = new Enigma("i", "ii", "iii", "ukw-b");
@@ -75,13 +110,6 @@ describe('Enigma M3', function() {
 
 
 describe('Enigma M4', function() {
-
- describe('instantiation', function() {
-  it('should initialize an Enigma instance', function() {
-   var result = new Enigma("beta", "i", "ii", "iii", "ukw-b");
-   expect(result).to.be.an.instanceof(Enigma);
-  });
- });
 
  describe('.setCode', function() {
   it('should set code', function() {

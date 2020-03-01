@@ -8,8 +8,8 @@ var assert = require('assert');
 describe("Instantiation", function(){
   
   describe('intantiating with less rotors', function() {
-  it('should throw an config error', function() {
-   expect(() => Enigma("ii", "iii", "ukw-b") ).to.throw("Enigma machine configuration is not setup right! Must be three or more wheels assigned/configured!");
+  it('should throw a config error', function() {
+   expect(() => Enigma("ii", "iii", "ukw-b") ).to.throw("Enigma machine configuration is not setup right! Machine needs to be configured with the right amount of rotors or entered correctly!");
   });
  });
 
@@ -24,6 +24,13 @@ describe("Instantiation", function(){
   it('should initialize an Enigma m4 instance', function() {
    var result = new Enigma("beta", "i", "ii", "iii", "ukw-b");
    expect(result).to.be.an.instanceof(Enigma);
+  });
+ });
+
+
+ describe('instantiating with wrong config', function() {
+  it('should throw a config error', function() {
+   expect(() => Enigma("alpha", "i", "ii", "iii", "ukw-b") ).to.throw("Enigma machine configuration is not setup right! Machine needs to be configured with the right amount of rotors or entered correctly!");
   });
  });
 

@@ -25,7 +25,7 @@ const m4 = enigma({
       W: "L",
       D: "N",
     },
-    code: ["C", "D", "E"],
+    code: ["C", "D", "E"]
   },
 });
 
@@ -40,7 +40,7 @@ const m3 = enigma({
       Q: "V",
       S: "M",
     },
-    code: ["A", "B", "C"],
+    code: ["A", "B", "C"]
   },
 });
 

@@ -1,11 +1,13 @@
 {
   "name": "node-enigma",
-  "version": "1.3.1",
-  "description": "Enigma M3/M4 Simulator",
-  "main": "lib/node-enigma.js",
+  "version": "2.0.0",
+  "description": "enigma m3 | m4 simulator",
+  "main": "src/node-enigma.js",
   "scripts": {
-    "test": "mocha --reporter nyan",
-    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "lint": "eslint 'src/**/*.ts'",
+    "test": "mocha -r ts-node/register test/**/*.ts --reporter nyan"
   },
   "repository": {
     "type": "git",
@@ -16,17 +18,25 @@
     "enigma",
     "encryption"
   ],
-  "author": "David Yeboah <daveyeb@gmail.com>",
+  "author": "david yeboah <daveyeb@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dyeboah/node-enigma/issues"
   },
   "homepage": "https://github.com/dyeboah/node-enigma#readme",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "coveralls": "^3.0.2",
-    "istanbul": "^0.4.5",
-    "mocha": "^5.2.0"
-  },
-  "dependencies": {}
+    "@eslint/js": "^9.17.0",
+    "@types/chai": "^5.0.1",
+    "@types/mocha": "^10.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "chai": "^4.5.0",
+    "eslint": "^9.17.0",
+    "globals": "^15.13.0",
+    "mocha": "^11.0.1",
+    "ts-node": "^10.9.2",
+    "tslint": "^5.20.1",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0"
+  }
 }

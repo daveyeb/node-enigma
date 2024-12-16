@@ -32,4 +32,4 @@ jobs:
         run: npm test 
 
       - name: Lint code
-        run: npx eslint . --ext .ts
+        run: npx eslint src/**/*.ts

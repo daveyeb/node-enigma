@@ -1,4 +1,4 @@
-# node-enigma [![Build Status](https://travis-ci.org/daveyeb/node-enigma.svg?branch=master)](https://travis-ci.org/daveyeb/node-enigma)
+# node-enigma ![workflow status](https://github.com/daveyeb/node-enigma/actions/workflows/ci.yml/badge.svg)
 
 Node.js module to cipher and decipher messages.
 This module is intended to imitate the operation of the Enigma M3/M4 developed during the WWII.

@@ -1,17 +1,10 @@
-# node-enigma [![Build Status](https://travis-ci.org/dyeboah/node-enigma.svg?branch=master)](https://travis-ci.org/dyeboah/node-enigma) [![Coverage Status](https://coveralls.io/repos/github/dyeboah/node-enigma/badge.svg?branch=master)](https://coveralls.io/github/dyeboah/node-enigma?branch=master)
+# node-enigma [![Build Status](https://travis-ci.org/daveyeb/node-enigma.svg?branch=master)](https://travis-ci.org/daveyeb/node-enigma)
 
 Node.js module to cipher and decipher messages.
 This module is intended to imitate the operation of the Enigma M3/M4 developed during the WWII.
 For more information on Enigma, visit [Enigma Cipher Machine](http://www.cryptomuseum.com/crypto/enigma/index.htm).
 
 Contact me [@daveyeb](mailto:daveyeb@gmail.com) with any questions, feedback or bugs.
-
-## New feature 😄
-
-* Machine avoids whitespaces and illegal characters. 
- 
-* Machine has no dependencies. 
-
 
 ## Install 🛠
 
@@ -22,39 +15,37 @@ $ npm install node-enigma
 ## Usage 📜
 
 ```javascript
-var Enigma = require("node-enigma");
+var {enima, decode, encode} = require("node-enigma");
 
-/**
- * M4 CONFIGURATION
- * WHEEL POSITIONS [4TH, 3RD, 2ND, 1ST, REFLECTOR]
- *
- * M3 CONFIGURATION
- * WHEEL POSITIONS [ 3RD, 2ND, 1ST, REFLECTOR]
- *
- * WHEELS
- *   ROTORS['i','ii','iii','iv','v','vi','vii,'viii']
- *   REFLECTORS['ukw-b','ukw-c','b-thin','c-thin']
- *   GREEK['beta', 'gamma']
- */
+var m4 = enigma({
+  rotors: ["iii", "iv", "v", "beta"],
+  reflector: "bthin",
+  options: {
+    plugboard: {
+      W: "L",
+      D: "N"
+    },
+  }})
 
-const m4 = new Enigma("beta", "v", "iv", "iii", "b-thin");
-m4.setCode(["C", "D", "E"]);
-m4.setPlugboard({
-  W: "L",
-  D: "N"
-});
-m4.decode("OGRFHRJYV"); // XXXKMVOXH
+decode(m4, "OGRFHRJYV"); // XXXKMVOXH
 
-const m3 = new Enigma("v", "iv", "iii", "ukw-b");
-m3.setCode(["A", "B", "C"]);
-m3.setPlugboard({
-  Q: "V",
-  S: "M"
-});
-m3.decode("OGRFHRJYV"); // INAPICKLE
+var m3 = enigma({
+  rotors: ["iii", "iv", "v"],
+  reflector: "ukwb",
+  options: {
+    plugboard: {
+      Q: "V",
+      S: "M"
+    },
+  }})
 
-const enigma = new Enigma("i", "ii", "iii", "ukw-b");
-enigma.encode("BABYDRIVER"); //ADLVITPHWX
+decode(m3, "OGRFHRJYV"); // INAPICKLE
+
+const machine = enigma({
+  rotors: ["iii", "ii", "i"],
+  reflector: "ukwb",
+ })
+encode(machine, "BABYDRIVER"); //ADLVITPHWX
 ```
 
 > Refer to test directory for more basic usage

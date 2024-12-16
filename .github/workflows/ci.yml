@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' 
+          node-version: '20' 
 
       - name: Install dependencies
         run: npm install
@@ -32,4 +32,4 @@ jobs:
         run: npm test 
 
       - name: Lint code
-        run: npx eslint src/**/*.ts
+        run: npx eslint src/ test/

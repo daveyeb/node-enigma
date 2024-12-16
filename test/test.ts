@@ -1,7 +1,7 @@
 "use strict";
 
 import { enigma, encode, decode } from "../src/index";
-var expect = require("chai").expect;
+import { expect } from "chai";
 
 describe("Instantiation", function () {
   describe("intantiating with invalid rotor", function () {
@@ -47,22 +47,22 @@ describe("Instantiation", function () {
 describe("Encoding plaintext with whitespaces/illegal characters", function () {
   describe("Plaintext with whitespaces", function () {
     it("should initialize an Enigma m3 instance", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii"],
         reflector: "ukwc",
       });
-      var result = encode(machine, "I LOVE FISHES");
+      const result = encode(machine, "I LOVE FISHES");
       expect(result).to.equal("W TPDV LWXLIB");
     });
   });
 
   describe("Plaintext with illegal characters", function () {
     it("should initialize an Enigma m3 instance", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii"],
         reflector: "ukwc",
       });
-      var result = encode(machine, "ILOVE*/?FISHES");
+      const result = encode(machine, "ILOVE*/?FISHES");
       expect(result).to.equal("WTPDV*/?LWXLIB");
     });
   });
@@ -71,7 +71,7 @@ describe("Encoding plaintext with whitespaces/illegal characters", function () {
 describe("Enigma M3", function () {
   describe(".setCode", function () {
     it("should set code", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii"],
         reflector: "ukwb",
         options: {
@@ -85,7 +85,7 @@ describe("Enigma M3", function () {
 
   describe(".setPlugboard", function () {
     it("should set pair plugs", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii"],
         reflector: "ukwb",
         options: {
@@ -96,7 +96,7 @@ describe("Enigma M3", function () {
         },
       });
 
-      var expected = {
+      const expected = {
         A: "A",
         B: "B",
         C: "C",
@@ -130,16 +130,16 @@ describe("Enigma M3", function () {
 
   describe(".encode", function () {
     it("should encode message with default setting", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii"],
         reflector: "ukwc",
       });
-      var result = encode(machine, "ILOVEFISHES");
+      const result = encode(machine, "ILOVEFISHES");
       expect(result).to.equal("WTPDVLWXLIB");
     });
 
     it("should encode with plug pairings", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii"],
         reflector: "ukwc",
         options: {
@@ -150,12 +150,12 @@ describe("Enigma M3", function () {
         },
       });
 
-      var result = encode(machine, "ILOVEFISHES");
+      const result = encode(machine, "ILOVEFISHES");
       expect(result).to.equal("WTPXFMWXLIW");
     });
 
     it("should encode message with ring setting", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii"],
         reflector: "ukwc",
         options: {
@@ -163,19 +163,19 @@ describe("Enigma M3", function () {
         },
       });
 
-      var result = encode(machine, "ILOVEFISHES");
+      const result = encode(machine, "ILOVEFISHES");
       expect(result).to.equal("KQJYTOHQEWP");
     });
   });
 
   describe(".decode", function () {
     it("should decode message with default setting", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii"],
         reflector: "ukwb",
       });
 
-      var result = decode(machine, "UUUJGGOCWJM");
+      const result = decode(machine, "UUUJGGOCWJM");
       expect(result).to.equal("ZVFZFZMJEWT");
     });
   });
@@ -184,7 +184,7 @@ describe("Enigma M3", function () {
 describe("Enigma M4", function () {
   describe(".setCode", function () {
     it("should set code", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii", "gamma"],
         reflector: "ukwb",
         options: {
@@ -198,7 +198,7 @@ describe("Enigma M4", function () {
 
   describe(".setPlugboard", function () {
     it("should set pair plugs", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii", "gamma"],
         reflector: "ukwb",
         options: {
@@ -209,7 +209,7 @@ describe("Enigma M4", function () {
         },
       });
 
-      var expected = {
+      const expected = {
         A: "A",
         B: "B",
         C: "C",
@@ -243,17 +243,17 @@ describe("Enigma M4", function () {
 
   describe(".encode", function () {
     it("should encode message with default setting 2", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii", "gamma"],
         reflector: "bthin",
       });
 
-      var result = decode(machine, "ILOVEFISHES");
+      const result = decode(machine, "ILOVEFISHES");
       expect(result).to.equal("UUUJGGOCWJM");
     });
 
     it("should encode with plug pairings", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii", "beta"],
         reflector: "bthin",
         options: {
@@ -263,31 +263,31 @@ describe("Enigma M4", function () {
           },
         },
       });
-      var result = encode(machine, "ILOVEFISHES");
+      const result = encode(machine, "ILOVEFISHES");
       expect(result).to.equal("HENTRDPATCH");
     });
 
     it("should encode message with ring setting", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii", "gamma"],
         reflector: "cthin",
         options: {
           code: ["Q", "E", "V"],
         },
       });
-      var result = encode(machine, "ILOVEFISHES");
+      const result = encode(machine, "ILOVEFISHES");
       expect(result).to.equal("TRZGXKNILKP");
     });
   });
 
   describe(".decode", function () {
     it("should decode message with default setting", function () {
-      var machine = enigma({
+      const machine = enigma({
         rotors: ["i", "ii", "iii", "gamma"],
         reflector: "bthin",
       });
 
-      var result = decode(machine, "UUUJGGOCWJM");
+      const result = decode(machine, "UUUJGGOCWJM");
       expect(result).to.equal("ILOVEFISHES");
     });
   });

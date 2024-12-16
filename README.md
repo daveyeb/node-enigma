@@ -15,7 +15,7 @@ $ npm install node-enigma
 ## Usage 📜
 
 ```javascript
-var {enima, decode, encode} = require("node-enigma");
+import {enima, decode, encode} from 'node-enigma';
 
 var m4 = enigma({
   rotors: ["iii", "iv", "v", "beta"],

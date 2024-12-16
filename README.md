@@ -15,37 +15,45 @@ $ npm install node-enigma
 ## Usage 📜
 
 ```javascript
-import {enima, decode, encode} from 'node-enigma';
+import { encode, enigma, decode } from ".";
 
-var m4 = enigma({
-  rotors: ["iii", "iv", "v", "beta"],
+const m4 = enigma({
+  rotors: ["v", "iv", "iii", "beta"],
   reflector: "bthin",
   options: {
     plugboard: {
       W: "L",
-      D: "N"
+      D: "N",
     },
-  }})
+    code: ["C", "D", "E"],
+  },
+});
 
-decode(m4, "OGRFHRJYV"); // XXXKMVOXH
+var result = decode(m4, "OGRFHRJYV"); // XXXKMVOXH
 
-var m3 = enigma({
-  rotors: ["iii", "iv", "v"],
+
+const m3 = enigma({
+  rotors: ["v", "iv", "iii"],
   reflector: "ukwb",
   options: {
     plugboard: {
       Q: "V",
-      S: "M"
+      S: "M",
     },
-  }})
+    code: ["A", "B", "C"],
+  },
+});
 
-decode(m3, "OGRFHRJYV"); // INAPICKLE
+var result = decode(m3, "OGRFHRJYV"); // INAPICKLE
+
 
 const machine = enigma({
-  rotors: ["iii", "ii", "i"],
+  rotors: ["i", "ii", "iii"],
   reflector: "ukwb",
- })
-encode(machine, "BABYDRIVER"); //ADLVITPHWX
+});
+
+var result = encode(machine, "BABYDRIVER"); //ADLVITPHWX
+
 ```
 
 > Refer to test directory for more basic usage

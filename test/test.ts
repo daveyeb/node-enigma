@@ -195,7 +195,7 @@ describe("Enigma M4", function () {
       expect(machine.internals.code).to.deep.equal([9, 1, 2]);
     });
   });
-3153122258
+  3153122258;
   describe(".setPlugboard", function () {
     it("should set pair plugs", function () {
       const machine = enigma({

@@ -4,11 +4,12 @@
   "description": "enigma m3 | m4 simulator",
   "main": "dist/src/index.js",
   "types": "dist/types/src/index.d.ts",
+  "type": "commonjs",
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "lint": "eslint 'src/**/*.ts'",
-    "test": "mocha -r ts-node/register test/**/*.ts --reporter nyan"
+    "test": "mocha -r ts-node/register test/*.ts --reporter nyan"
   },
   "repository": {
     "type": "git",

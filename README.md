@@ -60,4 +60,4 @@ var result = encode(machine, "BABYDRIVER"); //ADLVITPHWX
 
 ## Contribute 🤝
 
-Clone this repo to add custom wheels. Make a script inside the folder to test outputs with `./src/node-enigma`. Any fixes, cleanup or new features are always appreciated.
+Clone this repo to add custom wheels. Make a script inside the folder to test outputs with `require('./lib/node-enigma')`. Any fixes, cleanup or new features are always appreciated.

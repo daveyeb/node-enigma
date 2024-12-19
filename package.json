@@ -6,9 +6,9 @@
   "types": "dist/types/src/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node src/index.ts",
+    "start": "tsx src/index.ts",
     "lint": "eslint 'src/**/*.ts'",
-    "test": "mocha -r ts-node/register test/**/*.ts --reporter nyan"
+    "test": "mocha -r tsx test/**/*.ts --reporter nyan"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "mocha": "^11.0.2",
     "ts-node": "^10.9.2",
     "tslint": "^5.20.1",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0"
   }

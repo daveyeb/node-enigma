@@ -1,4 +1,5 @@
 # node-enigma ![workflow status](https://github.com/daveyeb/node-enigma/actions/workflows/ci.yml/badge.svg)
+![NPM Downloads](https://img.shields.io/npm/d18m/node-enigma?label=installs)
 
 Node.js module to cipher and decipher messages.
 This module is intended to imitate the operation of the Enigma M3/M4 developed during the WWII.
